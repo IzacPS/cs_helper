@@ -86,9 +86,9 @@ class CurrentStateData<E,Q>{
 }
 
 class PreviousData<E,Q>{
-  Q was;
-  Q now;
-  E previousHeadValue;
+  Q? was;
+  Q? now;
+  E? previousHeadValue;
   HeadDirection previousHeadDirection;
   int headPosition;
   PreviousData({
@@ -298,6 +298,7 @@ class TuringMachine<E,Q>{
         tape[head] = machineStep?.headValue;
         machineStep = machineStep?.previousStep;
         var headPreviousDirection = (currentHead > previousHead!) ? HeadDirection.left : HeadDirection.right;
+        return PreviousData(was: prev, now: now, previousHeadValue: previousHeadValue, previousHeadDirection: headPreviousDirection, headPosition: previousHead);
       }
       return null;
     }
