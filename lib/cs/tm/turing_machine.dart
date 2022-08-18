@@ -197,7 +197,7 @@ class TuringMachine<E,Q>{
     tape = i;
     tape.add(emptySymbol);
   }
-  getVizFormat(){
+  String getVizFormat(){
     String vizStr = "digraph finite_state_machine { fontname=\"Helvetica,Arial,sans-serif\" node [fontname=\"Helvetica,Arial,sans-serif\"] edge [fontname=\"Helvetica,Arial,sans-serif\"] rankdir=LR; node [shape = point ]; start; ";
 
     vizStr += "node [shape = doublecircle]; ${acceptState.toString()}; ";
@@ -225,7 +225,7 @@ class TuringMachine<E,Q>{
     return vizStr;
   }
 
-  nextStep(){// : CurrentStateData<E,Q>?{
+  CurrentStateData<E,Q>? nextStep(){// : {
     if(currentState?.stateLabel == acceptState ||
         currentState?.stateLabel == rejectState ||
         head < 0 ||
